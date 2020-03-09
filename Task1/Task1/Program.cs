@@ -12,7 +12,7 @@ namespace Task1
         public static async Task Main(string[] args)
         {
             //var websiteUrl = args.Length > 0 ? args[0] : throw new ArgumentNullException();
-            string websiteUrl = "http://pja.edu.pl";
+            string websiteUrl = "https://www.pja.edu.pl/rekrutacja-na-studia";
 
             var x = websiteUrl ?? throw new ArgumentException("url cannot be null");
 
@@ -31,7 +31,7 @@ namespace Task1
                     var htmlContent = await responce.Content.ReadAsStringAsync();
 
 
-                    var regex = new Regex("[a-z]+[a-z0-9]*@[a-z0-9]+\\.[a-z]+", RegexOptions.IgnoreCase);
+                    var regex = new Regex("ul.\\s[a-zA-Z]+\\s[0-9]+", RegexOptions.IgnoreCase);
 
                     var emailAddresses = regex.Matches(htmlContent);
 
